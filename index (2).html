@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZ株式会社 | 生成AI・DXコンサルティング</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --accent-dark: #1d4ed8;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-400: #94a3b8;
+            --gray-600: #475569;
+            --gray-800: #1e293b;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.8;
+            background: var(--white);
+        }
+
+        .font-en {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--gray-600);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 50%, #eff6ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Section Common */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        /* Services */
+        .services {
+            background: var(--gray-50);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        /* About / Profile */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            background: var(--gray-50);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gray-200), var(--gray-100));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gray-400);
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .profile-title {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 2;
+        }
+
+        .profile-projects {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .profile-projects-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 0.8rem;
+        }
+
+        .profile-projects-list {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .profile-projects-list li {
+            padding: 0.4rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .profile-projects-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .profile-category {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        .profile-category:first-of-type {
+            margin-top: 0;
+        }
+
+        .profile-subcategory {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            margin-top: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Company Info */
+        .company-table {
+            width: 100%;
+        }
+
+        .company-table tr {
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .company-table th,
+        .company-table td {
+            padding: 1.2rem 0;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .company-table th {
+            width: 120px;
+            font-weight: 500;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .company-table td {
+            color: var(--gray-800);
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .contact .section-label {
+            color: var(--accent);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-text {
+            color: var(--gray-400);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-wrapper {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .form-wrapper iframe {
+            display: block;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item-label {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-bottom: 0.3rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-item-value {
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        .contact-item-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item-value a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gray-800);
+            color: var(--gray-400);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer .logo {
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 1rem;
+            }
+            
+            nav {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-inner {
+                padding: 6rem 1.5rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">A<span>Z</span></a>
+            <nav>
+                <a href="#services">サービス</a>
+                <a href="#about">会社概要</a>
+                <a href="#contact">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-label font-en">AI TRANSFORMATION PARTNER</p>
+            <h1>AIに作業を。人に創造を。</h1>
+            <p>中小企業・自治体向けに、AIプロダクトの提供からコンサルティングまで。<br>経営者が本来の仕事に集中できる環境を実現します。</p>
+            <a href="#contact" class="btn">お問い合わせ</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-inner">
+            <p class="section-label font-en">SERVICES</p>
+            <h2 class="section-title">事業内容</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>経営コンサルティング</h3>
+                    <p>戦略コンサルティングファーム出身のノウハウを活かし、事業戦略の策定から実行支援まで、経営課題の解決をお手伝いします。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>自社AIプロダクト開発</h3>
+                    <p>業務効率化・生産性向上を実現するAIプロダクトを自社開発。実際の業務課題から生まれたプロダクトを提供しています。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>生成AIコンサルティング</h3>
+                    <p>ChatGPT・Claude等の生成AIを御社業務にどう活かすか。導入戦略の策定から、社内研修、運用ルール整備までトータルでサポートします。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>業務システム構築</h3>
+                    <p>Notion等のノーコードツールを活用し、顧客管理・案件管理・社内ナレッジベースなど、御社の業務を効率化するシステムを構築します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-inner">
+            <p class="section-label font-en">ABOUT</p>
+            <h2 class="section-title">会社概要</h2>
+            <div class="about-grid">
+                <div>
+                    <table class="company-table">
+                        <tr>
+                            <th>会社名</th>
+                            <td>AZ株式会社（アヅカブシキガイシャ）</td>
+                        </tr>
+                        <tr>
+                            <th>代表者</th>
+                            <td>辻井 敦生（つじい あつき）</td>
+                        </tr>
+                        <tr>
+                            <th>設立</th>
+                            <td>2025年10月</td>
+                        </tr>
+                        <tr>
+                            <th>資本金</th>
+                            <td>1円</td>
+                        </tr>
+                        <tr>
+                            <th>所在地</th>
+                            <td>〒106-0032<br>東京都港区六本木3丁目16-12 六本木KSビル5F</td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>
+                                経営コンサルティング<br>
+                                自社AIプロダクト開発<br>
+                                生成AIコンサルティング<br>
+                                業務システム構築（Notion等）
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <div>
+                            <p class="profile-name">辻井 敦生</p>
+                            <p class="profile-title">代表取締役</p>
+                        </div>
+                    </div>
+                    <p class="profile-bio">
+                        慶應義塾大学卒業後、EYパルテノン、Globe-ing社にて戦略コンサルタントとして従事。ビジネスデューデリジェンス、成長戦略策定、新規事業立案など多数のプロジェクトを経験。その後、医療系スタートアップの経営企画室長、AIコンサルティング企業のCSOを経て、2025年10月にAZ株式会社を設立。
+                    </p>
+                    <div class="profile-projects">
+                        <p class="profile-projects-title">主な支援実績</p>
+                        
+                        <p class="profile-category">経営コンサルティング</p>
+                        <p class="profile-subcategory">新規事業開発</p>
+                        <ul class="profile-projects-list">
+                            <li>大手電力会社 - 新規事業推進支援</li>
+                            <li>大手保険会社 - 新規事業立案・実行支援</li>
+                            <li>大手消費財メーカー - 新規事業立案・実行支援 など</li>
+                        </ul>
+                        <p class="profile-subcategory">戦略策定</p>
+                        <ul class="profile-projects-list">
+                            <li>在京キー局 - 成長戦略策定・実行支援</li>
+                            <li>大手教育系企業 - 中期経営計画策定支援 など</li>
+                        </ul>
+                        <p class="profile-subcategory">M&A関連</p>
+                        <ul class="profile-projects-list">
+                            <li>外資系PEファンド - IT企業買収に係るBDD, TechDD</li>
+                            <li>外資系PEファンド - IT企業買収に係るBDD</li>
+                            <li>外資系消費財メーカー - 消費財D2C企業買収に係るBDD</li>
+                            <li>大手総合商社 - 調剤薬局チェーン買収に係るBDD</li>
+                            <li>大手アドテック企業 - YouTuber事務所買収に係るBDD</li>
+                            <li>大手出版社 - 出版社買収に係るBDD など</li>
+                        </ul>
+
+                        <p class="profile-category">生成AI / DXコンサルティング</p>
+                        <ul class="profile-projects-list">
+                            <li>大手芸能事務所 - 社内システム構築支援</li>
+                            <li>法務SaaSスタートアップ - 生成AIを活用した新機能開発支援</li>
+                            <li>専門商社 - Notionを活用した社内DB構築支援 など</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-inner">
+            <p class="section-label font-en">CONTACT</p>
+            <h2 class="section-title">お問い合わせ</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <p class="contact-text">
+                        生成AIの導入・活用、業務システムの構築、その他経営課題について、まずはお気軽にご相談ください。初回のご相談は無料で承っております。
+                    </p>
+                    <div class="form-wrapper">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfUofbdLLZDZgBiQQtVdAkM9zZP24ZBlGpSstjTk3eaFVaCuw/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <p class="contact-item-label font-en">EMAIL</p>
+                        <p class="contact-item-value"><a href="mailto:info@az-inc.co.jp">info@az-inc.co.jp</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-item-label font-en">TEL</p>
+                        <p class="contact-item-value"><a href="tel:08037846032">080-3784-6032</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <p class="contact-item-label font-en">ADDRESS</p>
+                        <p class="contact-item-value">東京都港区六本木3丁目16-12<br>六本木KSビル5F</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="#" class="logo">A<span>Z</span></a>
+        <p class="font-en">&copy; 2025 AZ Inc. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
